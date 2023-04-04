@@ -1,0 +1,128 @@
+.tabs {
+  position: relative;   
+  min-height: 100%;
+  clear: both;
+  margin: 0;
+  padding: 15px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.tabs::-webkit-scrollbar{
+  display: none;
+}
+
+.tab {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px;
+  cursor:pointer;
+  position: relative;
+  left: 1px;
+}
+
+.tab [type=radio] {
+  display: none;
+}
+
+.tab .content {
+  position: fixed;
+  white-space: normal;
+  top: 50px;
+  left: 0;
+  background: white;
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  width: 266px;
+  border: 1px solid #ccc;
+}
+
+.tab [type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+
+.tab [type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+
+.wrapper1 {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin: 15px auto 0;
+  overflow-x: auto;
+}
+
+.wrapper1::-webkit-scrollbar{
+  display: none;
+}
+
+.wrapper1 .title {
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  /* border-bottom: 1px solid #ebedec; */
+}
+
+.wrapper1 .tabs_wrap {
+  padding: 20px 20px 20px 0;
+  /* border-bottom: 1px solid #ebedec; */
+}
+
+.wrapper1 .tabs_wrap ul {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: max-content;
+}
+
+.wrapper1 .tabs_wrap ul li {
+  list-style-type: none;
+  width: fit-content;
+  text-align: center;
+  background: #e9ecf1;
+  border-right: 1px solid #c1c4c9;
+  padding: 13px 15px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.wrapper1 .tabs_wrap ul li:first-child {
+  left: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.wrapper1 .tabs_wrap ul li:last-child {
+  border-right: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.wrapper1 .tabs_wrap ul li:hover,
+.wrapper1 .tabs_wrap ul li.active {
+  background: #FF847C;
+  color: #fff;
+}

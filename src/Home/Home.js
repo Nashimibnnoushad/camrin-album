@@ -23,12 +23,12 @@ import married from '../images/flaticon/svg/005-two.svg'
 import luxury from '../images/flaticon/svg/003-luxury.svg'
 import bride from '../images/bride.jpg'
 import groom from '../images/groom.jpg'
-
+import { albumData } from "./data";
 
 class Home extends React.Component {
 
     state = {
-        tab: 1
+        tab: 2
     }
 
     handleTabChange = (tab) => {
@@ -37,6 +37,9 @@ class Home extends React.Component {
 
     render() {
         const { tab } = this.state
+        const hinduFont = {
+            fontFamily:'initial'
+        }
         return (
             <div className="App">
                 <header role="banner" id="qbootstrap-header">
@@ -51,16 +54,16 @@ class Home extends React.Component {
                 </header>
                 <div className="qbootstrap-hero" data-section="home">
                     <div className="qbootstrap-overlay"></div>
-                    <div className="qbootstrap-cover text-center" data-stellar-background-ratio="0.5" style={{ backgroundImage: `url(${bg})` }}>
+                    <div className="qbootstrap-cover text-center" data-stellar-background-ratio="0.5" style={{ backgroundImage: `url(${albumData.coverDetails.coverPic})` }}>
                         <div className="display-t">
                             <div className="display-tc">
                                 <div className="container">
                                     <div className="col-md-10 col-md-offset-1">
                                         <div className="animate-box svg-sm colored">
                                             <img src={nature} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                            <h1 className="holder"><span>The Wedding of</span></h1>
-                                            <h2>Louie Jie &amp; Marializa</h2>
-                                            <p>02.12.2017</p>
+                                            <h1 className="holder"><span>The {albumData.coverDetails.event} of</span></h1>
+                                            <h2 style={albumData.coverDetails.caste === 'Hindu' ? hinduFont : {}}>{albumData.coverDetails.groom} &amp; {albumData.coverDetails.bride}</h2>
+                                            <p>{albumData.coverDetails.date}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -76,22 +79,22 @@ class Home extends React.Component {
                                 <div className="col-md-12 text-center section-heading svg-sm colored">
                                     <img src={married} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
                                     <h2>Are Getting Married</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam accusamus, sequi, minima repellendus explicabo magni aperiam, ducimus perferendis ad quidem suscipit omnis unde veritatis pariatur. Commodi, nisi. Iusto, accusantium a.</p>
-                                    <p><strong>on Dec 28, 2017 &mdash; Boracay, Philippines</strong></p>
+                                    <p>{albumData.coverDetails.message}</p>
+                                    {/* <p><strong>on Dec 28, 2017 &mdash; Boracay, Philippines</strong></p> */}
                                 </div>
                             </div>
                         </div>
                         <div className="row animate-box">
                             <div className="col-md-8 col-md-offset-2 text-center">
                                 <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
-                                    <img src={groom} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                    <h3>Louie Jie L. Mahusay</h3>
+                                    <img src={albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                    <h3>{albumData.coverDetails.groom}</h3>
                                     <span>Groom</span>
                                 </div>
                                 <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"><img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></h2></div>
                                 <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
-                                    <img src={bride} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                    <h3>Marializa R. Tabay</h3>
+                                    <img src={albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                    <h3>{albumData.coverDetails.bride}</h3>
                                     <span>Bride</span>
                                 </div>
                             </div>
@@ -102,8 +105,8 @@ class Home extends React.Component {
                 <div className="wrapper">
                     <div className="tabs_wrap">
                         <ul>
-                            <li data-tabs="male" className={tab == 1 ? "active" : ''}
-                                onClick={() => this.handleTabChange(1)}>Journey</li>
+                            {/* <li data-tabs="male" className={tab == 1 ? "active" : ''}
+                                onClick={() => this.handleTabChange(1)}>Journey</li> */}
                             <li data-tabs="female" className={tab == 2 ? "active" : ''}
                                 onClick={() => this.handleTabChange(2)}>Albums</li>
                         </ul>
@@ -112,7 +115,7 @@ class Home extends React.Component {
                 {tab == 1 ?
                     <Journey />
                     :
-                    <Album/>
+                    <Album album={albumData.album}/>
                 }
                 <Footer/>
             </div>

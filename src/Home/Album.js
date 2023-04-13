@@ -29,7 +29,7 @@ import image10 from '../images/gallery-10.jpg'
 class Album extends React.Component {
 
     state = {
-        tab: 1,
+        tab: this.props.album[0]?.id,
     }
 
     handleTabChange = (tab) => {
@@ -37,14 +37,15 @@ class Album extends React.Component {
     }
 
     render() {
-        const {tab} = this.state
+        const { tab } = this.state
+        const { album } = this.props
         return (
             <div className="App">
                 <div id="qbootstrap-gallery" data-section="gallery">
                     <div className="container">
                         <div className="row animate-box">
                             <div className="col-md-8 col-md-offset-2">
-                                <div className="col-md-12 text-center section-heading svg-sm colored">
+                                <div style={{marginBottom:'0px',paddingBottom:'0px'}} className="col-md-12 text-center section-heading svg-sm colored">
                                     <img src={iconimg} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
                                     <h2>Our Gallery</h2>
                                     <div className="row">
@@ -60,9 +61,15 @@ class Album extends React.Component {
                     <div className="wrapper1">
                         <div className="tabs_wrap">
                             <ul>
-                                <li data-tabs="male" className={tab == 1 ? "active" : ''}
+                                {album.map((val) => {
+                                    return (
+                                        <li data-tabs="male" className={tab == val.id ? "active" : ''}
+                                            onClick={() => this.handleTabChange(val.id)}>{val.categoryName}</li>
+                                    )
+                                })}
+                                {/* <li data-tabs="male" className={tab == 1 ? "active" : ''}
                                     onClick={() => this.handleTabChange(1)}>Wedding</li>
-                                <li data-tabs="female" className={tab == 2 ? "active" : ''}
+                                 <li data-tabs="female" className={tab == 2 ? "active" : ''}
                                     onClick={() => this.handleTabChange(2)}>Reception</li>
                                 <li data-tabs="male" className={tab == 3 ? "active" : ''}
                                     onClick={() => this.handleTabChange(3)}>Haldi</li>
@@ -75,14 +82,24 @@ class Album extends React.Component {
                                 <li data-tabs="male" className={tab == 7 ? "active" : ''}
                                     onClick={() => this.handleTabChange(7)}>Category 7</li>
                                 <li data-tabs="female" className={tab == 8 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(8)}>Category 8</li>
+                                    onClick={() => this.handleTabChange(8)}>Category 8</li> */}
                             </ul>
                         </div>
                     </div>
 
                     <div className="container-fluid">
                         <div id="outer-block">
-                            <div className="items">
+
+                            {album.find((v)=>v.id === tab).images.map((val) => {
+                                return (
+                                    <div className="items">
+                                        <div className="gallery animate-box">
+                                            <a className="gallery-img image-popup" href={val.imgUrl}><img src={val.imgUrl} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                            {/* <div className="items">
                                 <div className="gallery animate-box">
                                     <a className="gallery-img image-popup" href={image1}><img src={image1} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
                                 </div>
@@ -131,7 +148,7 @@ class Album extends React.Component {
                                 <div className="gallery animate-box">
                                     <a className="gallery-img image-popup" href={image10}><img src={image10} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

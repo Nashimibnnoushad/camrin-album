@@ -29,7 +29,7 @@ import image10 from '../images/gallery-10.jpg'
 class Album extends React.Component {
 
     state = {
-        tab: this.props.album[0]?.id,
+        tab: this.props.imageData[0]?.eventId,
     }
 
     handleTabChange = (tab) => {
@@ -38,7 +38,7 @@ class Album extends React.Component {
 
     render() {
         const { tab } = this.state
-        const { album } = this.props
+        const { album, imageData } = this.props
         return (
             <div className="App">
                 <div id="qbootstrap-gallery" data-section="gallery">
@@ -50,7 +50,7 @@ class Album extends React.Component {
                                     <h2>Our Gallery</h2>
                                     <div className="row">
                                         <div className="col-md-10 col-md-offset-1 subtext">
-                                            <h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
+                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -61,28 +61,12 @@ class Album extends React.Component {
                     <div className="wrapper1">
                         <div className="tabs_wrap">
                             <ul>
-                                {album.map((val) => {
+                                {imageData.map((val) => {
                                     return (
-                                        <li data-tabs="male" className={tab == val.id ? "active" : ''}
-                                            onClick={() => this.handleTabChange(val.id)}>{val.categoryName}</li>
+                                        <li data-tabs="male" className={tab == val.eventId ? "active" : ''}
+                                            onClick={() => this.handleTabChange(val.eventId)}>{val.eventName}</li>
                                     )
                                 })}
-                                {/* <li data-tabs="male" className={tab == 1 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(1)}>Wedding</li>
-                                 <li data-tabs="female" className={tab == 2 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(2)}>Reception</li>
-                                <li data-tabs="male" className={tab == 3 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(3)}>Haldi</li>
-                                <li data-tabs="female" className={tab == 4 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(4)}>Mylanchi</li>
-                                <li data-tabs="male" className={tab == 5 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(5)}>Category 5</li>
-                                <li data-tabs="female" className={tab == 6 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(6)}>Category 6</li>
-                                <li data-tabs="male" className={tab == 7 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(7)}>Category 7</li>
-                                <li data-tabs="female" className={tab == 8 ? "active" : ''}
-                                    onClick={() => this.handleTabChange(8)}>Category 8</li> */}
                             </ul>
                         </div>
                     </div>
@@ -90,65 +74,15 @@ class Album extends React.Component {
                     <div className="container-fluid">
                         <div id="outer-block">
 
-                            {album.find((v)=>v.id === tab).images.map((val) => {
+                            {imageData.find((v)=>v.eventId === tab).imagePath.map((val) => {
                                 return (
                                     <div className="items">
                                         <div className="gallery animate-box">
-                                            <a className="gallery-img image-popup" href={val.imgUrl}><img src={val.imgUrl} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
+                                            <a className="gallery-img image-popup" href={val}><img src={val} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
                                         </div>
                                     </div>
                                 )
                             })}
-                            {/* <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image1}><img src={image1} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image2}><img src={image2} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image3}><img src={image3} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image4}><img src={image4} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image5}><img src={image5} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image6}><img src={image6} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image7}><img src={image7} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image8}><img src={image8} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image9}><img src={image9} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="gallery animate-box">
-                                    <a className="gallery-img image-popup" href={image10}><img src={image10} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                 </div>

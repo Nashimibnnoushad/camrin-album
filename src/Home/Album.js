@@ -14,6 +14,7 @@ import '../css/simple-line-icons.css'
 import '../css/style.css'
 import '../css/style.css.map'
 import '../css/dropdown.css'
+import '../css/popup.css'
 import iconimg from '../images/flaticon/svg/005-two.svg'
 import image1 from '../images/gallery-1.jpg'
 import image2 from '../images/gallery-2.jpg'
@@ -25,19 +26,52 @@ import image7 from '../images/gallery-7.jpg'
 import image8 from '../images/gallery-8.jpg'
 import image9 from '../images/gallery-9.jpg'
 import image10 from '../images/gallery-10.jpg'
+import { Gallery } from "react-grid-gallery";
+
+const images = [
+    {
+        src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
+        width: '100%',
+        height: '100%',
+        // isSelected: true,
+        // caption: "After Rain (Jeshu John - designerspics.com)",
+    },
+
+];
 
 class Album extends React.Component {
 
     state = {
         tab: this.props.imageData[0]?.eventId,
+        // imageList: [],
+        currentImages: []
     }
 
+    componentDidMount(){
+        console.log(this.props.imageData,'img data')
+        let imageList = this.props.imageData[0]?.imagePath.map(function(val){return {'src': val, 'width': 4,
+        'height': 3}})
+        this.setState({currentImages: imageList})
+    }
     handleTabChange = (tab) => {
         this.setState({ tab: tab })
     }
 
+    handleImagePopup = (imgUrl) => {
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        var modalImg = document.getElementById("modalImg");
+        modalImg.src = imgUrl;
+    }
+
+    handleClosePopup = () => {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
     render() {
-        const { tab } = this.state
+        const { tab, currentImages } = this.state
         const { album, imageData } = this.props
         return (
             <div className="App">
@@ -45,7 +79,7 @@ class Album extends React.Component {
                     <div className="container">
                         <div className="row animate-box">
                             <div className="col-md-8 col-md-offset-2">
-                                <div style={{marginBottom:'0px',paddingBottom:'0px'}} className="col-md-12 text-center section-heading svg-sm colored">
+                                <div style={{ marginBottom: '0px', paddingBottom: '0px' }} className="col-md-12 text-center section-heading svg-sm colored">
                                     <img src={iconimg} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
                                     <h2>Our Gallery</h2>
                                     <div className="row">
@@ -71,20 +105,32 @@ class Album extends React.Component {
                         </div>
                     </div>
 
+                    {/* <Gallery images={currentImages} /> */}
+
                     <div className="container-fluid">
                         <div id="outer-block">
-
-                            {imageData.find((v)=>v.eventId === tab).imagePath.map((val) => {
+                            {imageData.find((v) => v.eventId === tab).imagePath.map((val, index) => {
                                 return (
                                     <div className="items">
-                                        <div className="gallery animate-box">
-                                            <a className="gallery-img image-popup" href={val}><img src={val} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></a>
+                                        <div className="gallery animate glow animate-box">
+                                            <a className="gallery-img image-popup">
+                                                <img src={val} id={val} className="img-responsive" alt={'image' + index} onClick={() => this.handleImagePopup(val)} />
+                                            </a>
                                         </div>
                                     </div>
+
                                 )
                             })}
+                            {/* {currentImages && 
+                            <Gallery images={currentImages} direction={"column"}/>
+                            } */}
                         </div>
                     </div>
+                </div>
+
+                <div id="myModal" className="modal">
+                    <span className="close" onClick={() => this.handleClosePopup()} >&times;</span>
+                    <img className="modal-content" id="modalImg" />
                 </div>
             </div >
         )

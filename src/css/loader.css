@@ -1,15 +1,10 @@
-* {
-  box-sizing: border-box;
-}
-:root {
-  /* --bg: #1c1717; */
-}
+
 body {
   min-height: 100vh;
   /* background: var(--bg); */
   /* background-color: #1c1717; */
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
 }
 @property --a {
   initial-value: 0deg;

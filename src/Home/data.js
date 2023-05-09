@@ -5,7 +5,7 @@ export const albumData = {
       bride: "Maria Thomas",
       caste: 'Christian',
       date: "02.03.2023",
-      coverPic: 'https://cdn0.weddingwire.in/article/1678/3_2/1280/jpg/8761-wedding-background-images-infinitememories-lead.jpeg',
+      coverPic: 'https://camrinfilms.com/photos/hindu-wedding-image-Akhil-and-Mridhula-wedding%2016.jpg',
       message: '“I got gaps; you got gaps; we fill each other’s gaps...Love is absolute loyalty. People fade, looks fade, but loyalty never fades. You can depend so much on certain people; you can set your watch by them. And that’s love, even if it doesn’t seem very exciting." —Sylvester Stallone',
       groomImage: 'https://demos.onepagelove.com/html/qbwedding/images/groom-men-2.jpg',
       brideImage: 'https://demos.onepagelove.com/html/qbwedding/images/bridesmaid-2.jpg'

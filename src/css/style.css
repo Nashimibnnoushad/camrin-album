@@ -313,7 +313,8 @@ h1, h2, h3, h4, h5, h6 {
 .qbootstrap-cover,
 .qbootstrap-hero {
   position: relative;
-  height: 800px;
+  /* height: 800px; */
+  height: 100%;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
@@ -336,9 +337,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .qbootstrap-cover,
 .video-hero {
-  background-size: cover;
+  /* background-size: cover;
   position: relative;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
 }
 @media screen and (max-width: 768px) {
   .qbootstrap-cover,
@@ -1685,6 +1689,20 @@ h1, h2, h3, h4, h5, h6 {
   animation-duration: .3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.animate {
+  animation-duration: 0.75s;
+  animation-delay: 0.5s;
+  animation-name: animate-fade;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+  animation-fill-mode: backwards;
+}
+
+/* Glow In */
+.animate.glow {
+  animation-name: animate-glow;
+  animation-timing-function: ease;
 }
 
 /*# sourceMappingURL=style.css.map */

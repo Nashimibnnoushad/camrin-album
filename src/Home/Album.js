@@ -16,28 +16,7 @@ import '../css/style.css.map'
 import '../css/dropdown.css'
 import '../css/popup.css'
 import iconimg from '../images/flaticon/svg/005-two.svg'
-import image1 from '../images/gallery-1.jpg'
-import image2 from '../images/gallery-2.jpg'
-import image3 from '../images/gallery-3.jpg'
-import image4 from '../images/gallery-4.jpg'
-import image5 from '../images/gallery-5.jpg'
-import image6 from '../images/gallery-6.jpg'
-import image7 from '../images/gallery-7.jpg'
-import image8 from '../images/gallery-8.jpg'
-import image9 from '../images/gallery-9.jpg'
-import image10 from '../images/gallery-10.jpg'
-import { Gallery } from "react-grid-gallery";
-
-const images = [
-    {
-        src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-        width: '100%',
-        height: '100%',
-        // isSelected: true,
-        // caption: "After Rain (Jeshu John - designerspics.com)",
-    },
-
-];
+import { albumData } from "./data";
 
 class Album extends React.Component {
 
@@ -105,10 +84,11 @@ class Album extends React.Component {
                         </div>
                     </div>
 
-                    {/* <Gallery images={currentImages} /> */}
 
                     <div className="container-fluid">
-                        <div id="outer-block">
+                        <div id={imageData.find((v) => v.eventId === tab).imagePath.length  === 1 ? 'outer-block1' :
+                        (imageData.find((v) => v.eventId === tab).imagePath.length  !== 1 && imageData.find((v) => v.eventId === tab).imagePath.length <= 5) ? 'outer-block2' : 
+                        imageData.find((v) => v.eventId === tab).imagePath.length  === 6 ? 'outer-block3' : 'outer-block'}>
                             {imageData.find((v) => v.eventId === tab).imagePath.map((val, index) => {
                                 return (
                                     <div className="items">
@@ -121,11 +101,26 @@ class Album extends React.Component {
 
                                 )
                             })}
-                            {/* {currentImages && 
-                            <Gallery images={currentImages} direction={"column"}/>
-                            } */}
                         </div>
                     </div>
+                    {/* <div className="container-fluid">
+                        <div id={albumData.album.find((v) => v.id === tab).images.length  === 1 ? 'outer-block1' :
+                        (albumData.album.find((v) => v.id === tab).images.length  !== 1 && albumData.album.find((v) => v.id === tab).images.length <= 5) ? 'outer-block2' : 
+                        albumData.album.find((v) => v.id === tab).images.length  === 6 ? 'outer-block3' : 'outer-block'}>
+                            {albumData.album.find((v) => v.id === tab).images.map((val, index) => {
+                                return (
+                                    <div className="items">
+                                        <div className="gallery animate glow animate-box">
+                                            <a className="gallery-img image-popup">
+                                                <img src={val.imgUrl} id={index} className="img-responsive" alt={'image' + index} onClick={() => this.handleImagePopup(val.imgUrl)} />
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                )
+                            })}
+                        </div>
+                    </div> */}
                 </div>
 
                 <div id="myModal" className="modal">

@@ -12,7 +12,7 @@ export const albumData = {
     },
     album: [
       {
-        id:1,
+        id:0,
         categoryName: 'Wedding',
         images :[
         {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-1.jpg'},
@@ -22,13 +22,13 @@ export const albumData = {
         {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-10.jpg'},
         {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-2.jpg'},
         {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-3.jpg'},
-        {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-9.jpg'},
-        {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-5.jpg'},
-        {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-4.jpg'},
+        // {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-9.jpg'},
+        // {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-5.jpg'},
+        // {imgUrl: 'https://demos.onepagelove.com/html/qbwedding/images/gallery-4.jpg'},
       ]
     },
     {
-      id:2,
+      id:1,
       categoryName: 'Haldi',
       images :[
       {imgUrl: 'https://static.wixstatic.com/media/74e6ee_3921b42f07584e80b8da75e8b049321e~mv2.jpg/v1/fill/w_640,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/74e6ee_3921b42f07584e80b8da75e8b049321e~mv2.jpg'},

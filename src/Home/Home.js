@@ -75,6 +75,9 @@ render() {
     const hinduFont = {
         fontFamily: 'initial'
     }
+    const muslimFont = {
+        fontFamily: 'Source Sans Pro'
+    }
     return (
         <>
             {this.state.loading ?
@@ -101,7 +104,7 @@ render() {
                                             <div className="animate-box svg-sm colored">
                                                 <img src={nature} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
                                                 <h1 className="holder"><span>The {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event} of</span></h1>
-                                                <h2 style={albumData.coverDetails.caste === 'Hindu' ? hinduFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom} &amp;
+                                                <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom} &amp;
                                                     {this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h2>
                                                 <p>{this.state.albumData.client.weddingDate ? this.formatDate(this.state.albumData.client.weddingDate) : albumData.coverDetails.date}</p>
                                             </div>
@@ -118,7 +121,7 @@ render() {
                                 <div className="col-md-8 col-md-offset-2 animate-box">
                                     <div className="col-md-12 text-center section-heading svg-sm colored">
                                         <img src={married} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                        <h2>{this.state.albumData.client.titleMessage ? this.state.albumData.client.titleMessage : 'Are Getting Married'}</h2>
+                                        <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.titleMessage ? this.state.albumData.client.titleMessage : 'Are Getting Married'}</h2>
                                         <p>{this.state.albumData.client.description ? this.state.albumData.client.description : albumData.coverDetails.message}</p>
                                         {/* <p><strong>on Dec 28, 2017 &mdash; Boracay, Philippines</strong></p> */}
                                     </div>
@@ -127,14 +130,14 @@ render() {
                             <div className="row animate-box">
                                 <div className="col-md-8 col-md-offset-2 text-center">
                                     <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
-                                        <img src={this.state.albumData.client.groomImage ? this.state.albumData.client.groomImage : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                        <h3>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
+                                        <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                        <h3 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
                                         <span>Groom</span>
                                     </div>
                                     <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"><img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></h2></div>
                                     <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
-                                        <img src={this.state.albumData.client.brideImage ? this.state.albumData.client.brideImage : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                        <h3>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
+                                        <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.bridePic} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                        <h3 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
                                         <span>Bride</span>
                                     </div>
                                 </div>
@@ -155,7 +158,7 @@ render() {
                     {tab == 1 ?
                         <Journey />
                         :
-                        <Album album={albumData.album} imageData={this.state.albumData.imageData ? this.state.albumData.imageData : []} />
+                        <Album album={albumData.album} caste={this.state.albumData.client.caste} imageData={this.state.albumData.imageData ? this.state.albumData.imageData : []} />
                     }
                     <Footer />
                 </div>

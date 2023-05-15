@@ -50,8 +50,14 @@ class Album extends React.Component {
     }
 
     render() {
+        const hinduFont = {
+            fontFamily: 'initial'
+        }
+        const muslimFont = {
+            fontFamily: 'Source Sans Pro'
+        }
         const { tab, currentImages } = this.state
-        const { album, imageData } = this.props
+        const { album, imageData, caste } = this.props
         return (
             <div className="App">
                 <div id="qbootstrap-gallery" data-section="gallery">
@@ -60,7 +66,7 @@ class Album extends React.Component {
                             <div className="col-md-8 col-md-offset-2">
                                 <div style={{ marginBottom: '0px', paddingBottom: '0px' }} className="col-md-12 text-center section-heading svg-sm colored">
                                     <img src={iconimg} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                    <h2>Our Gallery</h2>
+                                    <h2 style={caste === 'hindu' ? hinduFont : caste === 'muslim' ? muslimFont : {}}>Our Gallery</h2>
                                     <div className="row">
                                         <div className="col-md-10 col-md-offset-1 subtext">
                                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>

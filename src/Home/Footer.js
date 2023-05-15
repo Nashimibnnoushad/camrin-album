@@ -17,6 +17,7 @@ import '../css/dropdown.css'
 class Footer extends React.Component {
 
     state = {
+        year: new Date().getFullYear()
     }
     render() {
         return (
@@ -25,16 +26,16 @@ class Footer extends React.Component {
                     <div className="container">
                         <div className="row row-bottom-padded-sm">
                             <div className="col-md-12">
-                                <p className="copyright text-center">&copy; 2023 <a href="index.html">Wedding</a>. All Rights Reserved. Images by <a href="#" target="_blank">Camrin Photography</a></p>
+                                <p className="copyright text-center">&copy; {this.state.year} <a href='https://camrinfilms.com/' target="_blank">Wedding</a>. All Rights Reserved. Images by <a href='https://camrinfilms.com/' target="_blank">Camrin Photography</a></p>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <ul className="social social-circle">
-                                    <li><a href="#"><i className="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i className="icon-facebook"></i></a></li>
-                                    <li><a href="#"><i className="icon-youtube"></i></a></li>
-                                    <li><a href="#"><i className="icon-instagram"></i></a></li>
+                                    <li><a href="https://twitter.com/camrin_films" target="_blank"><i className="icon-twitter"></i></a></li>
+                                    <li><a href="https://www.facebook.com/camrinfilms" target="_blank"><i className="icon-facebook"></i></a></li>
+                                    <li><a href="https://www.youtube.com/camrinfilms" target="_blank"><i className="icon-youtube"></i></a></li>
+                                    <li><a href="https://www.instagram.com/camrinfilms" target="_blank"><i className="icon-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>

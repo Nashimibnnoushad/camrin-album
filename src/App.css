@@ -139,6 +139,13 @@
     -webkit-column-gap: 10px;
     column-gap: 10px;
   }
+
+  #groomBridePic {
+    width: 280px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 }
 
 
@@ -176,6 +183,13 @@
     -moz-column-gap: 10px;
     -webkit-column-gap: 10px;
     column-gap: 10px;
+  }
+
+  #groomBridePic {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
   }
 }
 

@@ -55,7 +55,7 @@ formatDate(date) {
 
 getClientData = async () => {
     const id = window.location.href.split('/')[4]
-    const res = await axios.get(`http://44.207.226.125:5000/image/getimages?workid=${id}`, {
+    const res = await axios.get(`https://camrin.in:5000/image/getimages?workid=${id}`, {
         headers: {
             "Authorization": `Staff d5c3fd21734fd37a88ce26acc0fb091daafd5bd0a331f7980420ec8e5a838043adc055efca527749d2a014b820f59f6dfefa4202ca028c1cd5c65ff5df929b2d67e3133075cfde166ad3a06d7cc36a1499d1de109eafc7a74d0a240f77504328`
         },
@@ -136,7 +136,7 @@ render() {
                                     </div>
                                     <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"><img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></h2></div>
                                     <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
-                                        <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.bridePic} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                        <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
                                         <h3 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
                                         <span>Bride</span>
                                     </div>

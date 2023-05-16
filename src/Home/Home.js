@@ -89,7 +89,7 @@ render() {
                             <nav className="navbar navbar-default">
                                 <div style={{ display: 'grid' }}>
                                     {/* <a href="#" className="js-qbootstrap-nav-toggle qbootstrap-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a> */}
-                                    <a className="navbar-brand" style={{ fontFamily: 'emoji', fontSize: 'larger' }}>Camrin Wedding Presents</a>
+                                    <a className="navbar-brand" style={{ fontFamily: 'emoji', fontSize: 'larger' }}>Camrin Films Presents</a>
                                 </div>
                             </nav>
                         </div>

@@ -42,11 +42,13 @@ class Album extends React.Component {
         modal.style.display = "block";
         var modalImg = document.getElementById("modalImg");
         modalImg.src = imgUrl;
+        document.body.style.overflow = 'hidden';
     }
 
     handleClosePopup = () => {
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
+        document.body.style.overflow = 'unset';
     }
 
     render() {
@@ -129,7 +131,7 @@ class Album extends React.Component {
                     </div> */}
                 </div>
 
-                <div id="myModal" className="modal">
+                <div id="myModal" className="modal" onClick={() => this.handleClosePopup()}>
                     <span className="close" onClick={() => this.handleClosePopup()} >&times;</span>
                     <img className="modal-content" id="modalImg" />
                 </div>

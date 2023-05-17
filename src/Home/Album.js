@@ -26,11 +26,15 @@ class Album extends React.Component {
         currentImages: []
     }
 
-    componentDidMount(){
-        console.log(this.props.imageData,'img data')
-        let imageList = this.props.imageData[0]?.imagePath.map(function(val){return {'src': val, 'width': 4,
-        'height': 3}})
-        this.setState({currentImages: imageList})
+    componentDidMount() {
+        console.log(this.props.imageData, 'img data')
+        let imageList = this.props.imageData[0]?.imagePath.map(function (val) {
+            return {
+                'src': val, 'width': 4,
+                'height': 3
+            }
+        })
+        this.setState({ currentImages: imageList })
     }
     handleTabChange = (tab) => {
         this.setState({ tab: tab })
@@ -79,6 +83,17 @@ class Album extends React.Component {
                         </div>
                     </div>
 
+                    {this.props.client?.videoUrl &&
+                        <>
+                            <div className="container1">
+                                <iframe className="responsive-iframe" src={this.props.client?.videoUrl} />
+                            </div>
+                        </>
+                    }
+                    {/* <div className="container1">
+                        <iframe className="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY" />
+                    </div> */}
+
                     <div className="wrapper1">
                         <div className="tabs_wrap">
                             <ul>
@@ -93,10 +108,11 @@ class Album extends React.Component {
                     </div>
 
 
+
                     <div className="container-fluid">
-                        <div id={imageData.find((v) => v.eventId === tab).imagePath.length  === 1 ? 'outer-block1' :
-                        (imageData.find((v) => v.eventId === tab).imagePath.length  !== 1 && imageData.find((v) => v.eventId === tab).imagePath.length <= 5) ? 'outer-block2' : 
-                        imageData.find((v) => v.eventId === tab).imagePath.length  === 6 ? 'outer-block3' : 'outer-block'}>
+                        <div id={imageData.find((v) => v.eventId === tab).imagePath.length === 1 ? 'outer-block1' :
+                            (imageData.find((v) => v.eventId === tab).imagePath.length !== 1 && imageData.find((v) => v.eventId === tab).imagePath.length <= 5) ? 'outer-block2' :
+                                imageData.find((v) => v.eventId === tab).imagePath.length === 6 ? 'outer-block3' : 'outer-block'}>
                             {imageData.find((v) => v.eventId === tab).imagePath.map((val, index) => {
                                 return (
                                     <div className="items">

@@ -164,9 +164,9 @@ class Home extends React.Component {
                         {tab == 1 ?
                             <Journey />
                             :
-                            <Album album={albumData.album} caste={this.state.albumData.client.caste} imageData={this.state.albumData.imageData ? this.state.albumData.imageData : []} />
+                            <Album album={albumData.album} client={this.state.albumData.client} caste={this.state.albumData.client.caste} imageData={this.state.albumData.imageData ? this.state.albumData.imageData : []} />
                         }
-                        <Footer />
+                        <Footer client={this.state.albumData.client}/>
                     </div>
                 }
             </>

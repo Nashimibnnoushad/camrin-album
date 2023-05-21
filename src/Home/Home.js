@@ -25,6 +25,8 @@ import married from '../images/flaticon/svg/005-two.svg'
 import luxury from '../images/flaticon/svg/003-luxury.svg'
 import bride from '../images/bride.jpg'
 import groom from '../images/groom.jpg'
+import camrinLogo from '../images/camrin-logo.jpg'
+import homeGif from '../images/couple-heart.gif'
 import { albumData } from "./data";
 import axios from 'axios'
 
@@ -35,6 +37,7 @@ class Home extends React.Component {
         loading: true,
         tab: 2,
         albumData: [],
+        screenWidth: window.innerWidth
     }
 
     componentDidMount() {
@@ -77,12 +80,24 @@ class Home extends React.Component {
     }
 
     render() {
-        const { tab } = this.state
+        const { tab, screenWidth } = this.state
         const hinduFont = {
-            fontFamily: 'initial'
+            fontFamily: 'Roboto',
+            margin: '0px',
+            fontWeight: '300',
+            // marginTop:'20px'
         }
         const muslimFont = {
-            fontFamily: 'Source Sans Pro'
+            fontFamily: 'Roboto',
+            margin: '0px',
+            fontWeight: '300',
+            // marginTop:'20px'
+        }
+        const pFont = {
+            color: 'white',
+            fontWeight: '400',
+            fontSize: '0px',
+            margin: '0px'
         }
         return (
             <>
@@ -95,7 +110,8 @@ class Home extends React.Component {
                                 <nav className="navbar navbar-default">
                                     <div style={{ display: 'grid' }}>
                                         {/* <a href="#" className="js-qbootstrap-nav-toggle qbootstrap-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a> */}
-                                        <a className="navbar-brand" style={{ fontFamily: 'emoji', fontSize: 'larger' }}>Camrin Films Presents</a>
+                                        {/* <img src={camrinLogo} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                        <a className="navbar-brand" style={{ fontFamily: 'emoji', fontSize: 'larger' }}>Eternal Love Framed: Camrin Films</a>
                                     </div>
                                 </nav>
                             </div>
@@ -105,13 +121,15 @@ class Home extends React.Component {
                             <div className="qbootstrap-cover text-center" data-stellar-background-ratio="0.5" style={{ backgroundImage: `url(${this.state.albumData.client.coverPic ? this.state.albumData.client.coverPic : albumData.coverDetails.coverPic})` }}>
                                 <div className="display-t">
                                     <div className="display-tc">
-                                        <div className="container">
+                                        <div id='cover-details' className="container">
                                             <div className="col-md-10 col-md-offset-1">
                                                 <div className="animate-box svg-sm colored">
-                                                    <img src={nature} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                                    <h1 className="holder"><span>The {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event} of</span></h1>
-                                                    <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom} &amp;
-                                                        {this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h2>
+                                                    {/* <img src={nature} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                                    {/* <h1 className="holder"><span>Embraking on Forever's Journey: A Joyful {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event} Celebration</span></h1> */}
+                                                    {/* <img src={homeGif} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                                    <p style={{ margin: '0px', lineHeight: '30px' }}>Embraking on Forever's Journey:<br /> A Joyful {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event} Celebration</p>
+                                                    <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : { margin: '0px' }}>
+                                                        {this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom} & {this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h2>
                                                     <p>{this.state.albumData.client.weddingDate ? this.formatDate(this.state.albumData.client.weddingDate) : albumData.coverDetails.date}</p>
                                                 </div>
                                             </div>
@@ -124,30 +142,76 @@ class Home extends React.Component {
                         <div id="qbootstrap-couple" className="qbootstrap-section-gray">
                             <div className="container">
                                 <div className="row animate-box">
-                                    <div className="col-md-8 col-md-offset-2 animate-box">
+                                    <div className="col-md-12  animate-box">
                                         <div className="col-md-12 text-center section-heading svg-sm colored">
-                                            <img src={married} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                            <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.titleMessage ? this.state.albumData.client.titleMessage : 'Are Getting Married'}</h2>
+                                            <img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                            {/* <img src={married} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                            <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>Forever Begins:<br /> Congratulations to <br />
+                                                <b>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom} & {this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</b><br />on your {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event}</h2>
+                                            {/* {this.state.albumData.client.titleMessage ? this.state.albumData.client.titleMessage : 'Are Getting Married'} */}
                                             <p>{this.state.albumData.client.description ? this.state.albumData.client.description : albumData.coverDetails.message}</p>
                                             {/* <p><strong>on Dec 28, 2017 &mdash; Boracay, Philippines</strong></p> */}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="row animate-box">
-                                    <div className="col-md-8 col-md-offset-2 text-center">
-                                        <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
-                                            <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                            <h3 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
-                                            <span>Groom</span>
+                                {screenWidth > 768 ?
+                                    <div className="row animate-box">
+                                        <div className="col-md-8 col-md-offset-2 text-center">
+                                            <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
+                                                <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                                <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
+                                                <span>Groom</span>
+                                                <h4>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}, the epitome of charm and grace, stands tall on the thresholdof a new beginning</h4>
+                                            </div>
+                                            <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"><img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></h2></div>
+                                            <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
+                                                <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                                <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
+                                                <span>Bride</span>
+                                                <h4>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}, a radiant bride-to-be, embodies beauty and grace with every step she takes</h4>
+                                            </div>
                                         </div>
-                                        <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"><img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></h2></div>
-                                        <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
+                                    </div>
+                                    :
+                                    <>
+                                        <div className="row animate-box">
+                                            <div className="col-md-12 col-md-offset-2 text-center">
+                                                <div className="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                                    <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                                    <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
+                                                    <span>Groom</span>
+                                                    <h4>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}, the epitome of charm and grace, stands tall on the thresholdof a new beginning</h4>
+                                                </div>
+                                                {/* <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"> */}
+                                                {/* <img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                                {/* </h2></div> */}
+                                                {/* <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
                                             <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
                                             <h3 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
                                             <span>Bride</span>
+                                        </div> */}
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        <div className="row animate-box">
+                                            <div className="col-md-12 col-md-offset-2 text-center">
+                                                {/* <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
+                                            <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                            <h3 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
+                                            <span>Groom</span>
+                                        </div> */}
+                                                {/* <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"> */}
+                                                {/* <img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                                {/* </h2></div> */}
+                                                <div className="col-md-12 col-sm-12 col-xs-12 nopadding">
+                                                    <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
+                                                    <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
+                                                    <span>Bride</span>
+                                                    <h4>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}, a radiant bride-to-be, embodies beauty and grace with every step she takes</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                }
                             </div>
                         </div>
 
@@ -166,7 +230,7 @@ class Home extends React.Component {
                             :
                             <Album album={albumData.album} client={this.state.albumData.client} caste={this.state.albumData.client.caste} imageData={this.state.albumData.imageData ? this.state.albumData.imageData : []} />
                         }
-                        <Footer client={this.state.albumData.client}/>
+                        <Footer client={this.state.albumData.client} />
                     </div>
                 }
             </>

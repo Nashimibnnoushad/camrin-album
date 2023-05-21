@@ -106,7 +106,7 @@
 
 .wrapper .tabs_wrap ul li:hover,
 .wrapper .tabs_wrap ul li.active {
-  background: #7fc469;
+  background: #f77168;
   color: #fff;
 }
 
@@ -148,10 +148,14 @@
   }
 
   #groomBridePic {
-    width: 280px;
-    height: 270px;
+    width: 150px !important;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
+  }
+
+  #cover-details {
+    padding-top: 25%;
   }
 }
 
@@ -193,10 +197,14 @@
   }
 
   #groomBridePic {
-    width: 200px;
+    width: 125px;
     height: 125px;
     object-fit: cover;
     border-radius: 50%;
+  }
+
+  #cover-details {
+    padding-top: 90%;
   }
 }
 
@@ -224,4 +232,9 @@
   right: 0;
   width: 100%;
   height: 100%;
+}
+
+.avatarImage {
+  margin-top: 30px !important;
+  font-weight: 700 !important;
 }

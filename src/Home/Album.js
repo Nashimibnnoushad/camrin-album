@@ -23,7 +23,8 @@ class Album extends React.Component {
     state = {
         tab: this.props.imageData[0]?.eventId,
         // imageList: [],
-        currentImages: []
+        currentImages: [],
+        currentImage: ''
     }
 
     componentDidMount() {
@@ -40,13 +41,40 @@ class Album extends React.Component {
         this.setState({ tab: tab })
     }
 
-    handleImagePopup = (imgUrl) => {
+    handleImagePopup = (imgUrl, index) => {
         // Get the modal
+        this.setState({ currentImage: index })
         var modal = document.getElementById("myModal");
         modal.style.display = "block";
         var modalImg = document.getElementById("modalImg");
         modalImg.src = imgUrl;
         document.body.style.overflow = 'hidden';
+    }
+
+    handleNextImage = () => {
+        // Get the modal
+        let imageList = this.props.imageData.find((v) => v.eventId === this.state.tab).imagePath
+        console.log(imageList.length, this.state.currentImage, 'image List')
+        if (this.state.currentImage < imageList.length - 1) {
+            var modalImg = document.getElementById("modalImg");
+            modalImg.src = imageList[this.state.currentImage + 1];
+            if (this.state.currentImage + 1 !== imageList.length) {
+                this.setState({ currentImage: this.state.currentImage + 1 })
+            }
+        }
+    }
+
+    handlePreviousImage = () => {
+        // Get the modal
+        let imageList = this.props.imageData.find((v) => v.eventId === this.state.tab).imagePath
+        console.log(imageList.length, this.state.currentImage, 'image List')
+        if (this.state.currentImage > 0) {
+            var modalImg = document.getElementById("modalImg");
+            modalImg.src = imageList[this.state.currentImage - 1];
+            if (this.state.currentImage !== 0) {
+                this.setState({ currentImage: this.state.currentImage - 1 })
+            }
+        }
     }
 
     handleClosePopup = () => {
@@ -71,8 +99,8 @@ class Album extends React.Component {
                         <div className="row animate-box">
                             <div className="col-md-8 col-md-offset-2">
                                 <div style={{ marginBottom: '0px', paddingBottom: '0px' }} className="col-md-12 text-center section-heading svg-sm colored">
-                                    <img src={iconimg} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                    <h2 style={caste === 'hindu' ? hinduFont : caste === 'muslim' ? muslimFont : {}}>Our Gallery</h2>
+                                    {/* <img src={iconimg} className="svg" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
+                                    <h2 style={caste === 'hindu' ? hinduFont : caste === 'muslim' ? muslimFont : {}}>Forever Framed:<br />Capturing Love's Journey</h2>
                                     <div className="row">
                                         <div className="col-md-10 col-md-offset-1 subtext">
                                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -118,7 +146,7 @@ class Album extends React.Component {
                                     <div className="items">
                                         <div className="gallery animate glow animate-box">
                                             <a className="gallery-img image-popup">
-                                                <img src={val} id={val} className="img-responsive" alt={'image' + index} onClick={() => this.handleImagePopup(val)} />
+                                                <img src={val} id={val} className="img-responsive" alt={'image' + index} onClick={() => this.handleImagePopup(val, index)} />
                                             </a>
                                         </div>
                                     </div>
@@ -147,9 +175,20 @@ class Album extends React.Component {
                     </div> */}
                 </div>
 
-                <div id="myModal" className="modal" onClick={() => this.handleClosePopup()}>
+                <div id="myModal" className="modal" >
                     <span className="close" onClick={() => this.handleClosePopup()} >&times;</span>
                     <img className="modal-content" id="modalImg" />
+                    {window.innerWidth > 768 ?
+                        <>
+                            <a className="webPrevious round" onClick={() => this.handlePreviousImage()}>&#8249;</a>
+                            <a className="webNext round" onClick={() => this.handleNextImage()}>&#8250;</a>
+                        </>
+                        :
+                        <>
+                            <a className="next round" onClick={() => this.handlePreviousImage()}>&#8249;</a>
+                            <a className="next round" onClick={() => this.handleNextImage()}>&#8250;</a>
+                        </>
+                    }
                 </div>
             </div >
         )

@@ -118,7 +118,7 @@ class Home extends React.Component {
                         </header>
                         <div className="qbootstrap-hero" data-section="home">
                             <div className="qbootstrap-overlay"></div>
-                            <div className="qbootstrap-cover text-center" data-stellar-background-ratio="0.5" style={{ backgroundImage: `url(${this.state.albumData.client.coverPic ? this.state.albumData.client.coverPic : albumData.coverDetails.coverPic})` }}>
+                            <div className="qbootstrap-cover text-center" data-stellar-background-ratio="0.5" style={{ backgroundImage: `url('${this.state.albumData.client.coverPic ? this.state.albumData.client.coverPic : albumData.coverDetails.coverPic}')` }}>
                                 <div className="display-t">
                                     <div className="display-tc">
                                         <div id='cover-details' className="container">
@@ -128,7 +128,7 @@ class Home extends React.Component {
                                                     {/* <h1 className="holder"><span>Embraking on Forever's Journey: A Joyful {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event} Celebration</span></h1> */}
                                                     {/* <img src={homeGif} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /> */}
                                                     <p style={{ margin: '0px', lineHeight: '30px' }}>Embraking on Forever's Journey:<br /> A Joyful {this.state.albumData.client.event ? this.state.albumData.client.event : albumData.coverDetails.event} Celebration</p>
-                                                    <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : { margin: '0px' }}>
+                                                    <h2 style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? hinduFont : hinduFont}>
                                                         {this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom} & {this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h2>
                                                     <p>{this.state.albumData.client.weddingDate ? this.formatDate(this.state.albumData.client.weddingDate) : albumData.coverDetails.date}</p>
                                                 </div>
@@ -159,14 +159,14 @@ class Home extends React.Component {
                                         <div className="col-md-8 col-md-offset-2 text-center">
                                             <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
                                                 <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                                <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
+                                                <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? hinduFont : hinduFont}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
                                                 <span>Groom</span>
                                                 <h4>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}, the epitome of charm and grace, stands tall on the thresholdof a new beginning</h4>
                                             </div>
                                             <div className="col-md-2 col-sm-2 col-xs-2 nopadding"><h2 className="amp-center"><img src={luxury} className="svg img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" /></h2></div>
                                             <div className="col-md-5 col-sm-5 col-xs-5 nopadding">
                                                 <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                                <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
+                                                <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? hinduFont : hinduFont}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
                                                 <span>Bride</span>
                                                 <h4>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}, a radiant bride-to-be, embodies beauty and grace with every step she takes</h4>
                                             </div>
@@ -178,7 +178,7 @@ class Home extends React.Component {
                                             <div className="col-md-12 col-md-offset-2 text-center">
                                                 <div className="col-md-12 col-sm-12 col-xs-12 nopadding">
                                                     <img id="groomBridePic" src={this.state.albumData.client.groomPic ? this.state.albumData.client.groomPic : albumData.coverDetails.groomImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                                    <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
+                                                    <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? hinduFont : hinduFont}>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}</h3>
                                                     <span>Groom</span>
                                                     <h4>{this.state.albumData.client.groomName ? this.state.albumData.client.groomName : albumData.coverDetails.groom}, the epitome of charm and grace, stands tall on the thresholdof a new beginning</h4>
                                                 </div>
@@ -204,7 +204,7 @@ class Home extends React.Component {
                                                 {/* </h2></div> */}
                                                 <div className="col-md-12 col-sm-12 col-xs-12 nopadding">
                                                     <img id="groomBridePic" src={this.state.albumData.client.bridePic ? this.state.albumData.client.bridePic : albumData.coverDetails.brideImage} className="img-responsive" alt="Free HTML5 Bootstrap Template by QBootstrap.com" />
-                                                    <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? muslimFont : {}}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
+                                                    <h3 className='avatarImage' style={this.state.albumData.client.caste === 'hindu' ? hinduFont : this.state.albumData.client.caste === 'muslim' ? hinduFont : hinduFont}>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}</h3>
                                                     <span>Bride</span>
                                                     <h4>{this.state.albumData.client.brideName ? this.state.albumData.client.brideName : albumData.coverDetails.bride}, a radiant bride-to-be, embodies beauty and grace with every step she takes</h4>
                                                 </div>

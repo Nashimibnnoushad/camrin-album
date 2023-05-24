@@ -114,12 +114,12 @@ class Album extends React.Component {
                     {this.props.client?.videoUrl &&
                         <>
                             <div className="container1">
-                                <iframe className="responsive-iframe" src={this.props.client?.videoUrl} />
+                                <iframe className="responsive-iframe" src={this.props.client?.videoUrl} allow="fullscreen;"/>
                             </div>
                         </>
                     }
                     {/* <div className="container1">
-                        <iframe className="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY" />
+                        <iframe className="responsive-iframe" src="https://www.youtube.com/embed/BFuUo7I79X4"  allow="fullscreen;"/>
                     </div> */}
 
                     <div className="wrapper1">

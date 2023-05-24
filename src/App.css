@@ -197,7 +197,7 @@
   }
 
   #groomBridePic {
-    width: 125px;
+    width: 125px !important;
     height: 125px;
     object-fit: cover;
     border-radius: 50%;

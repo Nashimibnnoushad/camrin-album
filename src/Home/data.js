@@ -43,6 +43,9 @@ export const albumData = {
       {imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8I5c1RObk0tt6qkTpGtMb-xZt_sClYK8k8g&usqp=CAU'},
     ]
   }
-    ]
+    ],
+  videoLinks : [
+    "https://www.youtube.com/embed/BFuUo7I79X4", "https://www.youtube.com/embed/if35asD6rDM"
+  ]
 
 };

@@ -15,7 +15,11 @@ import '../css/style.css'
 import '../css/style.css.map'
 import '../css/dropdown.css'
 import '../css/popup.css'
+import '../css/corousel.css'
 import iconimg from '../images/flaticon/svg/005-two.svg'
+import PreviousIcon from '../images/previous.png'
+import NextIcon from '../images/next.png'
+import Dots from '../images/dots.gif'
 import { albumData } from "./data";
 import Loader from "./Loader";
 
@@ -26,7 +30,8 @@ class Album extends React.Component {
         // imageList: [],
         currentImages: [],
         currentImage: '',
-        loader: true
+        loader: true,
+        videoIndex: 0
     }
 
     componentDidMount() {
@@ -43,7 +48,7 @@ class Album extends React.Component {
     closeLoader = () => {
         setTimeout(() => {
             this.setState({ loader: false })
-          }, 3000);
+        }, 3000);
     }
 
     handleTabChange = (tab) => {
@@ -96,6 +101,19 @@ class Album extends React.Component {
         document.body.style.overflow = 'unset';
     }
 
+    handleNextVideo = () => {
+        let totalVideo = this.props.client.videoLinks.length - 1
+        if (this.state.videoIndex < totalVideo) {
+            this.setState({ videoIndex: this.state.videoIndex + 1 })
+        }
+    }
+
+    handlePreviousVideo = () => {
+        if (this.state.videoIndex > 0) {
+            this.setState({ videoIndex: this.state.videoIndex - 1 })
+        }
+    }
+
     render() {
         const hinduFont = {
             fontFamily: 'initial'
@@ -109,7 +127,7 @@ class Album extends React.Component {
         const hide = {
             'display': 'none'
         }
-        const { tab, currentImages } = this.state
+        const { tab, currentImages, videoIndex } = this.state
         const { album, imageData, caste } = this.props
         return (
             <div className="App">
@@ -130,16 +148,38 @@ class Album extends React.Component {
                         </div>
                     </div>
 
-                    {this.props.client?.videoUrl &&
+                    {this.props.client?.videoLinks?.length > 0 &&
                         <>
-                            <div className="container1">
-                                <iframe className="responsive-iframe" src={this.props.client?.videoUrl} allow="fullscreen;" />
+                            <div className="container1" id={videoIndex}>
+                                <iframe className="responsive-iframe" src={this.props.client?.videoLinks[videoIndex]} allow="fullscreen;" />
                             </div>
+                            {this.props.client?.videoLinks?.length > 1 &&
+                                <>
+                                    <img className="videoPrevious" src={PreviousIcon} onClick={() => this.handlePreviousVideo()} />
+                                    <img className="dots" src={Dots} />
+                                    <img className="videoNext" src={NextIcon} onClick={() => this.handleNextVideo()} />
+                                </>
+                            }
                         </>
                     }
+                    {/* {albumData.videoLinks?.length > 0 &&
+                        <>
+                            <div className="container1" id={videoIndex}>
+                                <iframe className="responsive-iframe" src={albumData.videoLinks[videoIndex]} allow="fullscreen;" />
+                            </div>
+                            {albumData.videoLinks?.length > 1 &&
+                                <>
+                                    <img className="videoPrevious" src={PreviousIcon} onClick={() => this.handlePreviousVideo()} />
+                                    <img className="dots" src={Dots} />
+                                    <img className="videoNext" src={NextIcon} onClick={() => this.handleNextVideo()} />
+                                </>
+                            }
+                        </>
+                    } */}
                     {/* <div className="container1">
                         <iframe className="responsive-iframe" src="https://www.youtube.com/embed/BFuUo7I79X4"  allow="fullscreen;"/>
                     </div> */}
+
 
                     <div className="wrapper1">
                         <div className="tabs_wrap">
@@ -156,27 +196,27 @@ class Album extends React.Component {
 
 
                     {this.state.loader &&
-                        <div class="img-loader"></div>
+                        <div className="img-loader"></div>
                     }
-                        <div style={this.state.loader ? hide : view} className="container-fluid">
-                            <div id={imageData.find((v) => v.eventId === tab).imagePath.length === 1 ? 'outer-block1' :
-                                (imageData.find((v) => v.eventId === tab).imagePath.length !== 1 && imageData.find((v) => v.eventId === tab).imagePath.length <= 5) ? 'outer-block2' :
-                                    imageData.find((v) => v.eventId === tab).imagePath.length === 6 ? 'outer-block3' : 'outer-block'}>
-                                {imageData.find((v) => v.eventId === tab).imagePath.map((val, index) => {
-                                    return (
-                                        <div className="items">
-                                            <div className="gallery animate glow animate-box">
-                                                <a className="gallery-img image-popup">
-                                                    <img src={val} id={val} className="img-responsive" alt={'image' + index} onClick={() => this.handleImagePopup(val, index)} />
-                                                </a>
-                                            </div>
+                    <div style={this.state.loader ? hide : view} className="container-fluid">
+                        <div id={imageData.find((v) => v.eventId === tab).imagePath.length === 1 ? 'outer-block1' :
+                            (imageData.find((v) => v.eventId === tab).imagePath.length !== 1 && imageData.find((v) => v.eventId === tab).imagePath.length <= 5) ? 'outer-block2' :
+                                imageData.find((v) => v.eventId === tab).imagePath.length === 6 ? 'outer-block3' : 'outer-block'}>
+                            {imageData.find((v) => v.eventId === tab).imagePath.map((val, index) => {
+                                return (
+                                    <div className="items">
+                                        <div className="gallery animate glow animate-box">
+                                            <a className="gallery-img image-popup">
+                                                <img src={val} id={val} className="img-responsive" alt={'image' + index} onClick={() => this.handleImagePopup(val, index)} />
+                                            </a>
                                         </div>
+                                    </div>
 
-                                    )
-                                })}
-                            </div>
+                                )
+                            })}
                         </div>
-                    
+                    </div>
+
                     {/* <div className="container-fluid">
                         <div id={albumData.album.find((v) => v.id === tab).images.length  === 1 ? 'outer-block1' :
                         (albumData.album.find((v) => v.id === tab).images.length  !== 1 && albumData.album.find((v) => v.id === tab).images.length <= 5) ? 'outer-block2' : 

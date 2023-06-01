@@ -19,6 +19,8 @@ import '../css/corousel.css'
 import iconimg from '../images/flaticon/svg/005-two.svg'
 import PreviousIcon from '../images/previous.png'
 import NextIcon from '../images/next.png'
+import DisabledPrevious from '../images/disabledprevious.png'
+import DisabledNext from '../images/disabledext.png'
 import Dots from '../images/dots.gif'
 import { albumData } from "./data";
 import Loader from "./Loader";
@@ -155,9 +157,17 @@ class Album extends React.Component {
                             </div>
                             {videoUrl.length > 1 &&
                                 <>
-                                    <img className="videoPrevious" src={PreviousIcon} onClick={() => this.handlePreviousVideo()} />
+                                    {videoIndex === 0 ?
+                                        <img className="videoPrevious" style={{cursor:'not-allowed'}} src={DisabledPrevious} />
+                                        :
+                                        <img className="videoPrevious" src={PreviousIcon} onClick={() => this.handlePreviousVideo()} />
+                                    }
                                     <img className="dots" src={Dots} />
-                                    <img className="videoNext" src={NextIcon} onClick={() => this.handleNextVideo()} />
+                                    {videoIndex === videoUrl.length - 1 ?
+                                        <img className="videoNext" style={{cursor:'not-allowed'}} src={DisabledNext} />
+                                        :
+                                        <img className="videoNext" src={NextIcon} onClick={() => this.handleNextVideo()} />
+                                    }
                                 </>
                             }
                         </>

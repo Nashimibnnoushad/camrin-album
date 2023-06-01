@@ -102,7 +102,7 @@ class Album extends React.Component {
     }
 
     handleNextVideo = () => {
-        let totalVideo = this.props.client.videoLinks.length - 1
+        let totalVideo = this.props.videoUrl.length - 1
         if (this.state.videoIndex < totalVideo) {
             this.setState({ videoIndex: this.state.videoIndex + 1 })
         }
@@ -128,7 +128,7 @@ class Album extends React.Component {
             'display': 'none'
         }
         const { tab, currentImages, videoIndex } = this.state
-        const { album, imageData, caste } = this.props
+        const { album, imageData, caste, videoUrl } = this.props
         return (
             <div className="App">
                 <div id="qbootstrap-gallery" data-section="gallery">
@@ -148,12 +148,12 @@ class Album extends React.Component {
                         </div>
                     </div>
 
-                    {this.props.client?.videoLinks?.length > 0 &&
+                    {videoUrl.length > 0 &&
                         <>
                             <div className="container1" id={videoIndex}>
-                                <iframe className="responsive-iframe" src={this.props.client?.videoLinks[videoIndex]} allow="fullscreen;" />
+                                <iframe className="responsive-iframe" src={videoUrl[videoIndex].videoUrl} allow="fullscreen;" />
                             </div>
-                            {this.props.client?.videoLinks?.length > 1 &&
+                            {videoUrl.length > 1 &&
                                 <>
                                     <img className="videoPrevious" src={PreviousIcon} onClick={() => this.handlePreviousVideo()} />
                                     <img className="dots" src={Dots} />

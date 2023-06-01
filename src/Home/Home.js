@@ -228,7 +228,9 @@ class Home extends React.Component {
                         {tab == 1 ?
                             <Journey />
                             :
-                            <Album album={albumData.album} client={this.state.albumData.client} caste={this.state.albumData.client.caste} imageData={this.state.albumData.imageData ? this.state.albumData.imageData.sort((a, b) => a.eventId - b.eventId) : []} />
+                            <Album album={albumData.album} client={this.state.albumData.client} caste={this.state.albumData.client.caste} 
+                            imageData={this.state.albumData.imageData ? this.state.albumData.imageData.sort((a, b) => a.eventId - b.eventId) : []}
+                            videoUrl={this.state.albumData.client?.videoUrl ? this.state.albumData.client.videoUrl.sort((a, b) => a.eventId - b.eventId) : []} />
                         }
                         <Footer client={this.state.albumData.client} />
                     </div>

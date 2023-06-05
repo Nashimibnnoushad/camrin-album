@@ -153,18 +153,26 @@ class Album extends React.Component {
                     {videoUrl.length > 0 &&
                         <>
                             <div className="container1" id={videoIndex}>
-                                <iframe className="responsive-iframe" src={videoUrl[videoIndex].videoUrl} allow="fullscreen;" />
+                                {/* <iframe className="responsive-iframe" src={videoUrl[videoIndex].videoUrl} allow="fullscreen;" /> */}
+                                <iframe style={{ borderRadius: '10px' }}
+                                    className="iframe" width="560" height="315"
+                                    src={videoUrl[videoIndex].videoUrl}
+                                    title="Camrin Wedding Album"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
                             {videoUrl.length > 1 &&
                                 <>
                                     {videoIndex === 0 ?
-                                        <img className="videoPrevious" style={{cursor:'not-allowed'}} src={DisabledPrevious} />
+                                        <img className="videoPrevious" style={{ cursor: 'not-allowed' }} src={DisabledPrevious} />
                                         :
                                         <img className="videoPrevious" src={PreviousIcon} onClick={() => this.handlePreviousVideo()} />
                                     }
                                     <img className="dots" src={Dots} />
                                     {videoIndex === videoUrl.length - 1 ?
-                                        <img className="videoNext" style={{cursor:'not-allowed'}} src={DisabledNext} />
+                                        <img className="videoNext" style={{ cursor: 'not-allowed' }} src={DisabledNext} />
                                         :
                                         <img className="videoNext" src={NextIcon} onClick={() => this.handleNextVideo()} />
                                     }

@@ -46,6 +46,9 @@ export const albumData = {
     ],
   videoLinks : [
     "https://www.youtube.com/embed/BFuUo7I79X4", "https://www.youtube.com/embed/if35asD6rDM"
+  ],
+  landingDetails: [
+    {image: ''}
   ]
 
 };

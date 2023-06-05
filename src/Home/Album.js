@@ -46,6 +46,7 @@ class Album extends React.Component {
         // })
         // this.setState({ currentImages: imageList })}
         this.closeLoader()
+        // this.handleImageLoaded()
     }
     closeLoader = () => {
         setTimeout(() => {
@@ -53,10 +54,37 @@ class Album extends React.Component {
         }, 3000);
     }
 
+    // handleImageLoaded = () => {
+    //     // Select the images you want to track
+    //     const images = document.querySelectorAll('img');
+
+    //     // Count the number of images
+    //     let imageCount = images.length;
+
+    //     // Function to be called when an image is loaded
+    //     function imageLoaded() {
+    //         // Decrease the image count
+    //         imageCount--;
+
+    //         // Check if all images have been loaded
+    //         if (imageCount === 0) {
+    //             console.log('All images are fully loaded.');
+                
+    //             // You can perform additional actions here once all images are loaded.
+    //         }
+    //     }
+
+    //     // Loop through each image and attach the onload event handler
+    //     images.forEach(function (image) {
+    //         image.addEventListener('load', imageLoaded);
+    //     });
+    // }
+
     handleTabChange = (tab) => {
         this.setState({ loader: true })
         this.setState({ tab: tab }, () => {
             this.closeLoader()
+            // this.handleImageLoaded()
         })
         // this.checkImages()
     }
@@ -159,7 +187,7 @@ class Album extends React.Component {
                                     src={videoUrl[videoIndex].videoUrl}
                                     title="Camrin Wedding Album"
                                     frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen>
                                 </iframe>
                             </div>
